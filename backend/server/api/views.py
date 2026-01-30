@@ -17,17 +17,13 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Dataset
 
 
-# -----------------------------
 # Test API
-# -----------------------------
 @api_view(['GET'])
 def test_api(request):
     return Response({"message": "Backend working 🚀"})
 
 
-# -----------------------------
 # Upload CSV API
-# -----------------------------
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def upload_csv(request):
@@ -61,7 +57,7 @@ def upload_csv(request):
 
         mapped_cols = {}
 
-        # Auto-detect columns
+        # Auto detect columns
         for key, options in column_map.items():
             for col in df.columns:
                 if col in options:
@@ -126,9 +122,7 @@ def upload_csv(request):
         )
 
 
-# -----------------------------
 # History API
-# -----------------------------
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_history(request):

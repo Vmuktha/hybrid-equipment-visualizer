@@ -23,9 +23,7 @@ from matplotlib.figure import Figure
 BASE_URL = "http://127.0.0.1:8000/api"
 
 
-# ----------------------------
 # Login Window
-# ----------------------------
 class LoginWindow(QWidget):
 
     def __init__(self):
@@ -154,9 +152,7 @@ class RegisterWindow(QWidget):
                 msg
             )
 
-# ----------------------------
 # Dashboard Window
-# ----------------------------
 class DashboardWindow(QWidget):
 
     def __init__(self, token):
@@ -203,17 +199,15 @@ class DashboardWindow(QWidget):
 
         self.fetch_latest()
 
-    # ----------------------------
+
     # API Headers
-    # ----------------------------
     def headers(self):
         return {
             "Authorization": f"Bearer {self.token}"
         }
 
-    # ----------------------------
+
     # Fetch Latest Data
-    # ----------------------------
     def fetch_latest(self):
 
         res = requests.get(
@@ -232,9 +226,8 @@ class DashboardWindow(QWidget):
                 self.update_stats(latest["summary"])
                 self.update_chart(latest["summary"]["type_distribution"])
 
-    # ----------------------------
+ 
     # Upload CSV
-    # ----------------------------
     def upload_csv(self):
 
         path, _ = QFileDialog.getOpenFileName(
@@ -274,9 +267,7 @@ class DashboardWindow(QWidget):
                 "Upload Failed"
             )
 
-    # ----------------------------
     # Download PDF
-    # ----------------------------
     def download_report(self):
 
         res = requests.get(
@@ -286,7 +277,7 @@ class DashboardWindow(QWidget):
 
         if res.status_code == 200:
 
-        # Ask where to save
+        #where to save
             path, _ = QFileDialog.getSaveFileName(
                 self,
                 "Save Report",
@@ -314,9 +305,7 @@ class DashboardWindow(QWidget):
         )
 
 
-    # ----------------------------
     # Update Stats
-    # ----------------------------
     def update_stats(self, s):
 
         text = f"""
@@ -328,9 +317,8 @@ Avg Temperature: {s['avg_temperature']:.2f}
 
         self.stats_label.setText(text)
 
-    # ----------------------------
+    
     # Update Chart
-    # ----------------------------
     def update_chart(self, dist):
 
         self.figure.clear()
@@ -346,9 +334,8 @@ Avg Temperature: {s['avg_temperature']:.2f}
 
         self.canvas.draw()
 
-    # ----------------------------
+
     # Logout
-    # ----------------------------
     def logout(self):
 
         self.close()
@@ -357,9 +344,8 @@ Avg Temperature: {s['avg_temperature']:.2f}
         self.login.show()
 
 
-# ----------------------------
+
 # Run App
-# ----------------------------
 if __name__ == "__main__":
 
     app = QApplication(sys.argv)
