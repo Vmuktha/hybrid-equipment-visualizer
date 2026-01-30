@@ -37,9 +37,14 @@ function Register({ setMode }) {
     await axios.post(
       `${BASE_URL}/register/`,
       {
-        username: username,
-        email: email,
-        password: password,
+        username,
+        email,
+        password,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json"
+        },
       }
     );
 
