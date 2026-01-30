@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Switch from "@mui/material/Switch";
 import { motion } from "framer-motion";
 import CssBaseline from "@mui/material/CssBaseline";
+import BASE_URL from "./api";
 
 
 
@@ -74,7 +75,7 @@ function Dashboard() {
     try {
 
       const res = await axios.get(
-        "http://127.0.0.1:8000/api/history/"
+        "${https://chem-analyzer-backend.onrender.com}/api/history/"
       );
 
       setHistory(res.data);
@@ -109,7 +110,7 @@ function Dashboard() {
 
       const res = await axios.post(
 
-        "http://127.0.0.1:8000/api/upload/",
+        "/api/upload/",
         formData
       );
 
@@ -135,7 +136,7 @@ function Dashboard() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://127.0.0.1:8000/api/report/",
+        "${https://chem-analyzer-backend.onrender.com}/api/report/",
         {
           headers: {
             Authorization: `Bearer ${token}`
