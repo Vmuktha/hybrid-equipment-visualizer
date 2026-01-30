@@ -37,9 +37,9 @@ function Register({ setMode }) {
     await axios.post(
       `${BASE_URL}/register/`,
       {
-        username,
-        email,
-        password
+        username: username,
+        email: email,
+        password: password,
       }
     );
 
