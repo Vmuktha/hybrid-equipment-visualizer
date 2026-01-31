@@ -151,7 +151,7 @@ from rest_framework.decorators import permission_classes
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register_user(request):
-
+    print("REGISTER DATA:", request.data)
     username = request.data.get("username")
     email = request.data.get("email")
     password = request.data.get("password")
