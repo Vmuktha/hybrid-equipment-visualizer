@@ -15,7 +15,7 @@ from .models import Dataset
 from rest_framework.permissions import AllowAny
 
 
-@api_view(['GET'])
+@api_view(['GET', 'HEAD'])
 @permission_classes([AllowAny])
 def health_check(request):
     return Response({"status": "alive"})
