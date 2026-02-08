@@ -20,7 +20,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
 
 
-BASE_URL = "http://127.0.0.1:8000/api"
+BASE_URL = "https://chem-analyzer-backend.onrender.com/api"
 
 
 # Login Window

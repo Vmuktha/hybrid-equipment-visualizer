@@ -11,11 +11,14 @@ from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from rest_framework.permissions import IsAuthenticated
-
-
-
 from .models import Dataset
+from rest_framework.permissions import AllowAny
 
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def health_check(request):
+    return Response({"status": "alive"})
 
 # Test API
 @api_view(['GET'])
